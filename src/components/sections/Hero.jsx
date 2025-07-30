@@ -7,14 +7,14 @@ const Hero = () => {
   const socialLinks = [
     { 
       Icon: Github, 
-      href: "https://github.com/votre-username", 
+      href: "https://github.com/giovaniolivier", 
       label: "Github",
       target: "_blank",
       rel: "noopener noreferrer"
     },
     { 
       Icon: Linkedin, 
-      href: "https://linkedin.com/in/votre-profile", 
+      href: "https://linkedin.com/in/giovaniolivier", 
       label: "LinkedIn",
       target: "_blank",
       rel: "noopener noreferrer"
@@ -74,8 +74,10 @@ const Hero = () => {
             <div className="relative w-40 h-40 rounded-full overflow-hidden border-2 border-gray-800">
               <img 
                 src={myImage} 
-                alt="Profile" 
+                alt="LOVASOA Heriniaina Olivier - Développeur Full Stack" 
                 className="w-full h-full object-cover"
+                loading="eager"
+                decoding="async"
               />
             </div>
           </motion.div>

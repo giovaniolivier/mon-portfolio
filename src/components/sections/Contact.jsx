@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Send, CheckCircle, AlertCircle } from 'lucide-react';
 import { sendEmail } from '../../services/emailService';
+import LoadingSpinner from '../ui/LoadingSpinner';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -74,32 +75,35 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-32 relative">
+    <section id="contact" className="py-32 relative" aria-labelledby="contact-title">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,#1e1b4b,transparent_70%)]" />
       <div className="container mx-auto px-6 relative">
-        <h2 className="text-4xl font-bold text-white text-center mb-16">Contact</h2>
+        <h2 id="contact-title" className="text-4xl font-bold text-white text-center mb-16">Contact</h2>
         <div className="max-w-2xl mx-auto">
           <div className="relative group">
             <div className="absolute -inset-1 bg-gradient-to-r from-violet-600 to-fuchsia-600 rounded-2xl opacity-50 blur group-hover:opacity-75 transition duration-300" />
             <div className="relative bg-gray-900 p-8 rounded-2xl border border-gray-800">
               {submitStatus === 'success' && (
-                <div className="mb-6 p-4 bg-green-900/20 border border-green-500 rounded-lg flex items-center space-x-2">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
+                <div className="mb-6 p-4 bg-green-900/20 border border-green-500 rounded-lg flex items-center space-x-2" role="alert" aria-live="polite">
+                  <CheckCircle className="w-5 h-5 text-green-400" aria-hidden="true" />
                   <span className="text-green-400">Message envoyé avec succès ! Je vous répondrai dans les plus brefs délais.</span>
                 </div>
               )}
               
               {submitStatus === 'error' && (
-                <div className="mb-6 p-4 bg-red-900/20 border border-red-500 rounded-lg flex items-center space-x-2">
-                  <AlertCircle className="w-5 h-5 text-red-400" />
+                <div className="mb-6 p-4 bg-red-900/20 border border-red-500 rounded-lg flex items-center space-x-2" role="alert" aria-live="polite">
+                  <AlertCircle className="w-5 h-5 text-red-400" aria-hidden="true" />
                   <span className="text-red-400">Erreur lors de l'envoi. Veuillez réessayer ou me contacter directement par email.</span>
                 </div>
               )}
               
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6" noValidate>
                 <div>
-                  <label className="block text-gray-300 mb-2">Nom</label>
+                  <label htmlFor="name" className="block text-gray-300 mb-2">
+                    Nom <span className="text-red-400" aria-hidden="true">*</span>
+                  </label>
                   <input 
+                    id="name"
                     type="text"
                     name="name"
                     value={formData.name}
@@ -109,18 +113,24 @@ const Contact = () => {
                     }`}
                     placeholder="Votre nom"
                     disabled={isSubmitting}
+                    aria-describedby={errors.name ? 'name-error' : undefined}
+                    aria-invalid={!!errors.name}
+                    required
                   />
                   {errors.name && (
-                    <p className="text-red-400 text-sm mt-1 flex items-center">
-                      <AlertCircle className="w-4 h-4 mr-1" />
+                    <p id="name-error" className="text-red-400 text-sm mt-1 flex items-center" role="alert">
+                      <AlertCircle className="w-4 h-4 mr-1" aria-hidden="true" />
                       {errors.name}
                     </p>
                   )}
                 </div>
                 
                 <div>
-                  <label className="block text-gray-300 mb-2">Email</label>
+                  <label htmlFor="email" className="block text-gray-300 mb-2">
+                    Email <span className="text-red-400" aria-hidden="true">*</span>
+                  </label>
                   <input 
+                    id="email"
                     type="email"
                     name="email"
                     value={formData.email}
@@ -130,18 +140,24 @@ const Contact = () => {
                     }`}
                     placeholder="votre@email.com"
                     disabled={isSubmitting}
+                    aria-describedby={errors.email ? 'email-error' : undefined}
+                    aria-invalid={!!errors.email}
+                    required
                   />
                   {errors.email && (
-                    <p className="text-red-400 text-sm mt-1 flex items-center">
-                      <AlertCircle className="w-4 h-4 mr-1" />
+                    <p id="email-error" className="text-red-400 text-sm mt-1 flex items-center" role="alert">
+                      <AlertCircle className="w-4 h-4 mr-1" aria-hidden="true" />
                       {errors.email}
                     </p>
                   )}
                 </div>
                 
                 <div>
-                  <label className="block text-gray-300 mb-2">Message</label>
+                  <label htmlFor="message" className="block text-gray-300 mb-2">
+                    Message <span className="text-red-400" aria-hidden="true">*</span>
+                  </label>
                   <textarea 
+                    id="message"
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
@@ -151,10 +167,13 @@ const Contact = () => {
                     rows={4}
                     placeholder="Votre message..."
                     disabled={isSubmitting}
+                    aria-describedby={errors.message ? 'message-error' : undefined}
+                    aria-invalid={!!errors.message}
+                    required
                   />
                   {errors.message && (
-                    <p className="text-red-400 text-sm mt-1 flex items-center">
-                      <AlertCircle className="w-4 h-4 mr-1" />
+                    <p id="message-error" className="text-red-400 text-sm mt-1 flex items-center" role="alert">
+                      <AlertCircle className="w-4 h-4 mr-1" aria-hidden="true" />
                       {errors.message}
                     </p>
                   )}
@@ -164,19 +183,23 @@ const Contact = () => {
                   type="submit"
                   disabled={isSubmitting}
                   className="w-full bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white py-4 rounded-lg hover:opacity-90 transition-opacity duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
+                  aria-describedby={isSubmitting ? 'submitting-status' : undefined}
                 >
                   {isSubmitting ? (
                     <>
-                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                      <LoadingSpinner size="sm" color="white" />
                       <span>Envoi en cours...</span>
                     </>
                   ) : (
                     <>
-                      <Send className="w-5 h-5" />
+                      <Send className="w-5 h-5" aria-hidden="true" />
                       <span>Envoyer</span>
                     </>
                   )}
                 </button>
+                {isSubmitting && (
+                  <p id="submitting-status" className="sr-only">Envoi du message en cours...</p>
+                )}
               </form>
               
               {/* Informations de contact alternatives */}
@@ -186,6 +209,7 @@ const Contact = () => {
                   <a 
                     href="mailto:oliviergiovani00@gmail.com"
                     className="text-violet-400 hover:text-violet-300 transition-colors"
+                    aria-label="Envoyer un email à oliviergiovani00@gmail.com"
                   >
                     oliviergiovani00@gmail.com
                   </a>
