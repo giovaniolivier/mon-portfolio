@@ -7,22 +7,23 @@ const Skills = () => {
     { 
       icon: Monitor, 
       title: "Frontend", 
-      desc: "React, Vue, Angular, CSS",
+      desc: "React, Vue, Next.js, CSS, Tailwind CSS",
       technologies: [
         { name: "React", level: 90 },
         { name: "Vue.js", level: 75 },
-        { name: "Angular", level: 70 },
-        { name: "CSS/SCSS", level: 85 }
+        { name: "Next.js", level: 70 },
+        { name: "CSS/SCSS", level: 85 },
+        { name: "Tailwind CSS", level: 90 }
       ]
     },
     { 
       icon: Database, 
       title: "Backend", 
-      desc: "Node.js, Laravel",
+      desc: "Node.js, Express",
       technologies: [
         { name: "Node.js", level: 85 },
-        { name: "Laravel", level: 80 },
         { name: "Express.js", level: 75 },
+        { name: "MongoDB", level: 80 },
         { name: "MySQL", level: 90 }
       ]
     },
@@ -33,8 +34,7 @@ const Skills = () => {
       technologies: [
         { name: "JavaScript", level: 95 },
         { name: "TypeScript", level: 80 },
-        { name: "PHP", level: 85 },
-        { name: "Python", level: 70 }
+        { name: "PHP", level: 70 }
       ]
     },
     { 
@@ -44,7 +44,6 @@ const Skills = () => {
       technologies: [
         { name: "AWS", level: 75 },
         { name: "Firebase", level: 80 },
-        { name: "Docker", level: 70 },
         { name: "Git", level: 90 }
       ]
     }

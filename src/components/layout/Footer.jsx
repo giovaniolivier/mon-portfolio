@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 const Footer = () => {
   const navItems = ['About', 'Projects', 'Skills', 'Contact'];
   const services = ['Web Development', 'UI/UX Design', 'Consulting', 'Mobile Apps'];
-  const technologies = ['React', 'Node.js', 'Laravel', 'TypeScript', 'MySQL', 'AWS'];
+  const technologies = ['React','Express', 'Node.js', 'Next.js', 'TypeScript', 'JavaScript', 'MySQL', 'MongoDB'];
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -17,12 +17,12 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-gray-900 pt-24 pb-12">
+    <footer className="relative bg-gray-900 pt-10 pb-6">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,#1e1b4b,transparent_70%)]" />
       
       <div className="container mx-auto px-6 relative">
         {/* Section principale */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-10">
           {/* Logo et Description */}
           <div className="space-y-6">
             <div className="flex items-center space-x-3">
@@ -46,7 +46,7 @@ const Footer = () => {
                 <div className="text-xs text-gray-400">Années d'expérience</div>
               </div>
               <div className="text-center p-3 bg-gray-800/50 rounded-lg">
-                <div className="text-2xl font-bold text-violet-400">15+</div>
+                <div className="text-2xl font-bold text-violet-400">6+</div>
                 <div className="text-xs text-gray-400">Projets réalisés</div>
               </div>
             </div>
@@ -172,7 +172,7 @@ const Footer = () => {
         </div>
 
         {/* Séparateur avec effet */}
-        <div className="relative mb-8">
+        <div className="relative mb-6">
           <div className="h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent" />
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             <div className="w-4 h-4 bg-gradient-to-r from-violet-600 to-fuchsia-600 rounded-full" />
