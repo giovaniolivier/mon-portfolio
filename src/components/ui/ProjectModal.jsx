@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ExternalLink, Github, Globe } from 'lucide-react';
+import { X, Github, Globe } from 'lucide-react';
 
 const ProjectModal = ({ project, isOpen, onClose }) => {
   if (!project) return null;
