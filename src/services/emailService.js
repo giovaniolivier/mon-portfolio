@@ -5,9 +5,9 @@ import emailjs from '@emailjs/browser';
 
 // Configuration EmailJS (à remplacer par vos vraies clés)
 const EMAILJS_CONFIG = {
-  serviceId: 'YOUR_SERVICE_ID', // Remplacez par votre Service ID
-  templateId: 'YOUR_TEMPLATE_ID', // Remplacez par votre Template ID
-  publicKey: 'YOUR_PUBLIC_KEY', // Remplacez par votre Public Key
+  serviceId: 'service_f1kst58', // Remplacez par votre Service ID
+  templateId: 'template_5oo9cqe', // Remplacez par votre Template ID
+  publicKey: '6GQnjy6mPcbfxyY7j', // Remplacez par votre Public Key
 };
 
 export const sendEmail = async (formData) => {
