@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github, Linkedin, Mail, Star, MapPin, Phone, Calendar, ArrowUp } from 'lucide-react';
+import { Github, Linkedin, Mail, Star, MapPin, Calendar, ArrowUp } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Footer = () => {
